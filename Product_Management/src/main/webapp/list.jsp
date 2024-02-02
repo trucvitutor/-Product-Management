@@ -13,15 +13,21 @@
     <title>Product-management</title>
 </head>
 <body>
-<a href="">thêm</a>
+<a href="/product?action=create">thêm</a>
+<form action="/product">
+    <input type="hidden" name="action" value="search">
+    <input type="text" name="nameProduct">
+<button type="submit">tìm kiếm</button>
+</form>
 <table border="1px">
     <h1>Danh sách sản phẩm</h1>
     <tr>
-        <td> thứ tự </td>
+        <td> thứ tự</td>
         <td>tên</td>
         <td>giá</td>
         <td>mô tả</td>
         <td>nhà sản xuất</td>
+        <td>Xoa</td>
     </tr>
     <tr>
         <c:forEach var="p" items="${product}">
@@ -31,8 +37,16 @@
         <td>${p.priceProduct}</td>
         <td>${p.describeProduct}</td>
         <td>${p.producer}</td>
+    <td><a href="/product?action=update&id=${p.id}">
+        sửa
+    </a></td>
+        <td>
+
+            <a href="/product?action=delete&id=${p.id}">Xóa</a>
+
+        </td>
     </tr>
-        </c:forEach>
+    </c:forEach>
 
 
 </table>
